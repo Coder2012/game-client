@@ -1,0 +1,26 @@
+.container {
+  background-color: red;
+  padding: 16px;
+  text-align-last: left;
+}
+
+.formRow {
+  display: flex;
+  margin: 8px 0;
+}
+
+.title {
+  margin: 8px 0;
+  font-size: 16px;
+}
+
+label {
+  min-width: 120px;
+}
+
+.joinButton {
+  background-color: blue;
+  border: none;
+  border-radius: 32px;
+  padding: 12px;
+}
