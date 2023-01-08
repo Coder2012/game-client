@@ -18,5 +18,6 @@ export type RoomState = {
   password: string;
   hostId: string;
   players: Player[];
+  guesses: string[];
   word: Word;
 };

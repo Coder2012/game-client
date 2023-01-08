@@ -8,6 +8,7 @@ import type { ConnectionMetadata } from './types';
 import styles from './app.module.scss';
 import { Header } from './components/Header/Header';
 import { Players } from './components/Players/Players';
+import { Guess } from './components/Guess/Guess';
 
 function App() {
   const [hasJoinedGame, setHasJoinedGame] = useState(false);
@@ -31,6 +32,11 @@ function App() {
     send('removePlayer', id);
   };
 
+  const onGuessHandler = (value: string) => {
+    send('playerGuess', value);
+    console.log('guess ', value);
+  };
+
   return (
     <div className={styles.container}>
       {!hasJoinedGame && <Header joinGameHandler={onJoinGameHandler} />}
@@ -45,6 +51,8 @@ function App() {
           Start Game
         </button>
       )}
+      {room?.isGameRunning && room?.word.text && <Guess guessHandler={onGuessHandler} />}
+      <p>{room?.guesses.map((guess) => guess).join(' ')}</p>
     </div>
   );
 }
