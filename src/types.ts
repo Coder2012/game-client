@@ -6,6 +6,7 @@ export type ConnectionMetadata = {
 export type Player = {
   id: string;
   name: string;
+  colour: string;
 };
 
 type Word = {
@@ -13,11 +14,18 @@ type Word = {
   description: string;
 };
 
+export type Guess = {
+  playerId: string;
+  playerName: string;
+  colour: string;
+  word: string;
+};
+
 export type RoomState = {
   isGameRunning: boolean;
   password: string;
   hostId: string;
   players: Player[];
-  guesses: string[];
+  guesses: Guess[];
   word: Word;
 };

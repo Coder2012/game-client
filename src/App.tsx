@@ -9,6 +9,7 @@ import styles from './app.module.scss';
 import { Header } from './components/Header/Header';
 import { Players } from './components/Players/Players';
 import { Guess } from './components/Guess/Guess';
+import { Status } from './components/Status/Status';
 
 function App() {
   const [hasJoinedGame, setHasJoinedGame] = useState(false);
@@ -46,13 +47,13 @@ function App() {
           {room?.word.text} - {room?.word.description}
         </div>
       )}
-      {!room?.isGameRunning && room?.hostId && (
+      {!room?.isGameRunning && room?.hostId && room?.players?.length > 1 && (
         <button type="button" onClick={onStartGameHandler}>
           Start Game
         </button>
       )}
       {room?.isGameRunning && room?.word.text && <Guess guessHandler={onGuessHandler} />}
-      <p>{room?.guesses.map((guess) => guess).join(' ')}</p>
+      <Status guesses={room?.guesses}></Status>
     </div>
   );
 }

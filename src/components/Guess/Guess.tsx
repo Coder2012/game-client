@@ -1,4 +1,4 @@
-import { KeyboardEvent, useState } from 'react';
+import { ChangeEvent, KeyboardEvent, useState } from 'react';
 
 import styles from './guess.module.scss';
 
@@ -9,14 +9,20 @@ type Props = {
 export const Guess = ({ guessHandler }: Props) => {
   const [guess, setGuess] = useState('');
 
-  const onGuessChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const onGuessChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     setGuess(event.target.value);
   };
 
-  const onSubmit = (event: KeyboardEvent<HTMLInputElement>) => {
+  const onKeyUpHandler = (event: KeyboardEvent<HTMLInputElement>) => {
     if ((event as KeyboardEvent).key === 'Enter') {
       guessHandler(guess);
+      setGuess('');
     }
+  };
+
+  const onSubmitHandler = () => {
+    guessHandler(guess);
+    setGuess('');
   };
 
   return (
@@ -24,9 +30,9 @@ export const Guess = ({ guessHandler }: Props) => {
       <h2 className={styles.title}>Enter your guess</h2>
       <div className={styles.formRow}>
         <label htmlFor="guess">Guess</label>
-        <input name="guess" type="text" onChange={onGuessChangeHandler} onKeyUp={onSubmit} />
+        <input name="guess" type="text" value={guess} onChange={onGuessChangeHandler} onKeyUp={onKeyUpHandler} />
       </div>
-      <button className={styles.joinButton} type="button" onClick={() => guessHandler(guess)}>
+      <button className={styles.joinButton} type="button" onClick={onSubmitHandler}>
         Guess
       </button>
     </div>

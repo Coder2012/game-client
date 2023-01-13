@@ -15,8 +15,9 @@ export const Players = ({ room, removePlayerClickHandler }: Props) => {
         <Player
           key={player.id}
           id={player.id}
+          colour={player.colour}
           name={player.name}
-          canRemove={Boolean(room?.hostId)}
+          canRemove={Boolean(room?.hostId && player.id !== room?.hostId)}
           clickHandler={() => removePlayerClickHandler(player.id)}
         />
       ))}
