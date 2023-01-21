@@ -1,18 +1,19 @@
 import React from 'react';
-import { Guess } from '../../types';
+import { Winner } from '../../types';
 
 type Props = {
-  guesses: Guess[] | undefined;
+  winner: Winner;
 };
 
-export const Status = ({ guesses }: Props) => {
+export const Status = ({ winner }: Props) => {
+  const { player, word }: Winner = winner;
+
   return (
     <div>
-      {guesses?.map((guess) => (
-        <p style={{ color: `#${guess.colour}` }}>
-          {guess.playerName} - {guess.word}
-        </p>
-      ))}
+      <p>Game over</p>
+      <p>
+        The winner is {player.name} who guessed {word}!
+      </p>
     </div>
   );
 };

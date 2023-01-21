@@ -21,8 +21,14 @@ export type Guess = {
   word: string;
 };
 
+export type Winner = {
+  player: Player;
+  word: string;
+};
+
 export type RoomState = {
   isGameRunning: boolean;
+  winner: Winner;
   password: string;
   hostId: string;
   players: Player[];

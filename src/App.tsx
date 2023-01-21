@@ -9,6 +9,7 @@ import styles from './app.module.scss';
 import { Header } from './components/Header/Header';
 import { Players } from './components/Players/Players';
 import { Guess } from './components/Guess/Guess';
+import { Guesses } from './components/Guess/Guesses';
 import { Status } from './components/Status/Status';
 
 function App() {
@@ -52,8 +53,9 @@ function App() {
           Start Game
         </button>
       )}
+      {room?.winner?.player && <Status winner={room?.winner} />}
       {room?.isGameRunning && room?.word.text && <Guess guessHandler={onGuessHandler} />}
-      <Status guesses={room?.guesses}></Status>
+      <Guesses guesses={room?.guesses}></Guesses>
     </div>
   );
 }
