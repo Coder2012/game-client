@@ -10,10 +10,10 @@ export const Status = ({ winner }: Props) => {
 
   return (
     <div>
-      <p>Game over</p>
       <p>
-        The winner is {player.name} who guessed {word}!
+        Well done {player.name.toUpperCase()} you guessed {word.toUpperCase()}!
       </p>
+      <p>Get ready for the next word...</p>
     </div>
   );
 };

@@ -48,7 +48,7 @@ function App() {
           {room?.word.text} - {room?.word.description}
         </div>
       )}
-      {!room?.isGameRunning && room?.hostId && room?.players?.length > 1 && (
+      {room?.isGameOver && !room?.isGameRunning && room?.hostId && room?.players?.length > 1 && (
         <button type="button" onClick={onStartGameHandler}>
           Start Game
         </button>

@@ -7,6 +7,7 @@ export type Player = {
   id: string;
   name: string;
   colour: string;
+  score: number;
 };
 
 type Word = {
@@ -28,6 +29,7 @@ export type Winner = {
 
 export type RoomState = {
   isGameRunning: boolean;
+  isGameOver: boolean;
   winner: Winner;
   password: string;
   hostId: string;
