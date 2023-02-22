@@ -1,20 +1,41 @@
-import { useState } from 'react';
+import { ReactNode, useState } from 'react';
 import { useStore } from 'effector-react';
+import type { ConnectionMetadata } from './types';
 
 import { connect, send } from './network';
-import { gameService } from './services/game';
 
-import type { ConnectionMetadata } from './types';
-import styles from './app.module.scss';
-import { Header } from './components/Header/Header';
-import { Players } from './components/Players/Players';
-import { Guess } from './components/Guess/Guess';
-import { Guesses } from './components/Guess/Guesses';
-import { Status } from './components/Status/Status';
+import { Home } from './routes/Home/Home';
+import { gameService } from './services/game';
+import { Game } from './routes/Home/Game';
+import { JsxElement } from 'typescript';
+import { Finish } from './routes/Home/Finish';
 
 function App() {
   const [hasJoinedGame, setHasJoinedGame] = useState(false);
+  const [path, setPath] = useState<string>('home');
   const { room } = useStore(gameService.$);
+
+  const unwatch = gameService.navigation.watch((path) => path && setPath(path));
+
+  const componentMap: any = {
+    home: {
+      component: () => (
+        <Home
+          room={room}
+          onJoinGameHandler={onJoinGameHandler}
+          onRemovePlayerClickHandler={onRemovePlayerClickHandler}
+          onStartGameHandler={onStartGameHandler}
+          hasJoinedGame={hasJoinedGame}
+        />
+      ),
+    },
+    game: {
+      component: () => <Game room={room} onGuessHandler={onGuessHandler} />,
+    },
+    finish: {
+      component: () => <Finish room={room} />,
+    },
+  };
 
   const onJoinGameHandler = async (data: ConnectionMetadata) => {
     try {
@@ -39,24 +60,12 @@ function App() {
     console.log('guess ', value);
   };
 
+  const Component = componentMap[path].component;
+
   return (
-    <div className={styles.container}>
-      {!hasJoinedGame && <Header joinGameHandler={onJoinGameHandler} />}
-      <Players room={room} removePlayerClickHandler={onRemovePlayerClickHandler} />
-      {room?.word.text && (
-        <div>
-          {room?.word.text} - {room?.word.description}
-        </div>
-      )}
-      {room?.isGameOver && !room?.isGameRunning && room?.hostId && room?.players?.length > 1 && (
-        <button type="button" onClick={onStartGameHandler}>
-          Start Game
-        </button>
-      )}
-      {room?.winner?.player && <Status winner={room?.winner} />}
-      {room?.isGameRunning && room?.word.text && <Guess guessHandler={onGuessHandler} />}
-      <Guesses guesses={room?.guesses}></Guesses>
-    </div>
+    <>
+      <Component />
+    </>
   );
 }
 

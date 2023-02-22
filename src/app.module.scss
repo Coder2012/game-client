@@ -1,12 +1,23 @@
+@use "styles/_variables.scss" as *;
+
 .container {
+  background-color: $sandy-stone-beach-ocean-diver-2-hex;
+  color: $sandy-stone-beach-ocean-diver-3-hex;
   text-align: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.title {
+  background-color: $sandy-stone-beach-ocean-diver-1-hex;
+  padding: 12px;
+}
+
+.button {
+  background: none;
+  border: 2px solid $toyota-red;
+  border-radius: 8px;
+  color: $toyota-red;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 6px;
 }

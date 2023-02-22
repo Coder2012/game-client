@@ -2,9 +2,11 @@ import React from 'react';
 import { RoomState } from '../../types';
 import { Player } from '../Player/Player';
 
+import styles from './players.module.scss';
+
 type Props = {
   room: RoomState | null;
-  removePlayerClickHandler: (id: string) => void;
+  removePlayerClickHandler?: (id: string) => void;
 };
 
 export const Players = ({ room, removePlayerClickHandler }: Props) => {
@@ -18,8 +20,14 @@ export const Players = ({ room, removePlayerClickHandler }: Props) => {
           colour={player.colour}
           name={player.name}
           score={player.score}
-          canRemove={Boolean(room?.hostId && player.id !== room?.hostId)}
-          clickHandler={() => removePlayerClickHandler(player.id)}
+          canRemove={Boolean(!room?.isGameRunning && room?.hostId && player.id !== room?.hostId)}
+          {...(removePlayerClickHandler
+            ? {
+                clickHandler: (id: string) => {
+                  removePlayerClickHandler(player.id);
+                },
+              }
+            : {})}
         />
       ))}
     </div>

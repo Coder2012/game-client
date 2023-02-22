@@ -24,8 +24,13 @@ export const connect = async ({ playerName, password }: ConnectionMetadata) => {
     console.log(`client left the room = ${code}`);
   });
 
-  room.onMessage('getPlayerName', () => {
-    gameService.nameRequest();
+  room.onMessage('navigation', (path: string) => {
+    gameService.navigation(path);
+  });
+
+  room.onMessage('powerup', (message) => {
+    console.log('message received from server');
+    console.log(message);
   });
 };
 
