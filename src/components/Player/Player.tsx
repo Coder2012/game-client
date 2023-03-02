@@ -1,4 +1,3 @@
-import react from 'react';
 import classNames from 'classnames';
 import styles from './player.module.scss';
 

@@ -1,4 +1,4 @@
-import { ReactNode, useState } from 'react';
+import { useState } from 'react';
 import { useStore } from 'effector-react';
 import type { ConnectionMetadata } from './types';
 
@@ -7,7 +7,6 @@ import { connect, send } from './network';
 import { Home } from './routes/Home/Home';
 import { gameService } from './services/game';
 import { Game } from './routes/Home/Game';
-import { JsxElement } from 'typescript';
 import { Finish } from './routes/Home/Finish';
 
 function App() {
@@ -15,6 +14,7 @@ function App() {
   const [path, setPath] = useState<string>('home');
   const { room } = useStore(gameService.$);
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const unwatch = gameService.navigation.watch((path) => path && setPath(path));
 
   const componentMap: any = {

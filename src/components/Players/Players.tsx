@@ -1,8 +1,5 @@
-import React from 'react';
 import { RoomState } from '../../types';
 import { Player } from '../Player/Player';
-
-import styles from './players.module.scss';
 
 type Props = {
   room: RoomState | null;
