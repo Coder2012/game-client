@@ -1,6 +1,6 @@
-import { Players } from '../../components/Players/Players';
-import { RoomState } from '../../types';
-import styles from '../../app.module.scss';
+import { Players } from '../components/Players/Players';
+import { RoomState } from '../types';
+import styles from '../app.module.scss';
 
 type Props = {
   room: RoomState | null;

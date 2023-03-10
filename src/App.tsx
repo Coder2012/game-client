@@ -4,10 +4,11 @@ import type { ConnectionMetadata } from './types';
 
 import { connect, send } from './network';
 
-import { Home } from './routes/Home/Home';
+import { Home } from './routes/Home';
 import { gameService } from './services/game';
-import { Game } from './routes/Home/Game';
-import { Finish } from './routes/Home/Finish';
+import { Game } from './routes/Game';
+import { Finish } from './routes/Finish';
+import { ErrorMessage } from './routes/ErrorMessage';
 
 function App() {
   const [hasJoinedGame, setHasJoinedGame] = useState(false);
@@ -34,6 +35,9 @@ function App() {
     },
     finish: {
       component: () => <Finish room={room} />,
+    },
+    error: {
+      component: () => <ErrorMessage />,
     },
   };
 

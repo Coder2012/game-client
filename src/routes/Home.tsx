@@ -1,7 +1,7 @@
-import { ConnectionMetadata, RoomState } from '../../types';
-import { Login } from '../../components/Login/Login';
-import styles from '../../app.module.scss';
-import { Players } from '../../components/Players/Players';
+import { ConnectionMetadata, RoomState } from '../types';
+import { Login } from '../components/Login/Login';
+import styles from '../app.module.scss';
+import { Players } from '../components/Players/Players';
 
 type Props = {
   room: RoomState | null;

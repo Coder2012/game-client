@@ -22,6 +22,7 @@ export const connect = async ({ playerName, password }: ConnectionMetadata) => {
 
   room.onLeave((code) => {
     console.log(`client left the room = ${code}`);
+    gameService.navigation('error');
   });
 
   room.onMessage('navigation', (path: string) => {
