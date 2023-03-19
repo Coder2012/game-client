@@ -8,11 +8,20 @@ export type Player = {
   name: string;
   colour: string;
   score: number;
+  lastAnswer: string;
 };
 
-type Word = {
-  text: string;
+type Options = {
+  A: string;
+  B: string;
+  C: string;
+  D: string;
+};
+
+type Question = {
+  category: string;
   description: string;
+  options: Options;
 };
 
 export type Guess = {
@@ -35,5 +44,6 @@ export type RoomState = {
   hostId: string;
   players: Player[];
   guesses: Guess[];
-  word: Word;
+  question: Question;
+  answer: string;
 };

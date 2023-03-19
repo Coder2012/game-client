@@ -7,14 +7,19 @@ type Props = {
 };
 
 export const Finish = ({ room }: Props) => {
-  const winner = room?.players.find((player) => player.score === 5);
-  return (
+  const winners = room?.players.filter((player) => player.score === 5);
+  return winners ? (
     <div className={styles.container}>
       <section className={styles.title}>
         <h1>Word Quiz - First to 5</h1>
       </section>
       {room?.players?.length && <Players room={room} />}
-      <h1 style={{ color: `#${winner?.colour}` }}>Congratulations to {winner?.name}! You won this match</h1>
+      <h1>Congratulations to our {winners?.length > 1 ? 'winners' : 'winner'}</h1>
+      <ul>
+        {winners.map((player) => (
+          <li style={{ color: `${player.colour}` }}>{player.name}</li>
+        ))}
+      </ul>
     </div>
-  );
+  ) : null;
 };

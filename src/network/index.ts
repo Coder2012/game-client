@@ -12,7 +12,6 @@ export const connect = async ({ playerName, password }: ConnectionMetadata) => {
   room = await client.joinOrCreate('room', { playerName, password });
 
   room.onStateChange((state) => {
-    console.log('state:', state);
     gameService.networkUpdate({
       ...state,
       timestamp: Date.now(),
