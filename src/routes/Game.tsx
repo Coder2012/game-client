@@ -1,6 +1,7 @@
 import { Players } from '../components/Players/Players';
 import styles from '../app.module.scss';
 import { RoomState } from '../types';
+import { AnimatedText } from '../components/AnimatedText/AmimatedText';
 
 type Props = {
   room: RoomState | null;
@@ -8,7 +9,6 @@ type Props = {
 };
 
 export const Game = ({ room, onGuessHandler }: Props) => {
-  //
   return (
     <div className={styles.container}>
       <section className={styles.title}>
@@ -17,7 +17,7 @@ export const Game = ({ room, onGuessHandler }: Props) => {
       {room?.players?.length && <Players room={room} />}
       {room?.question && (
         <>
-          <p>Q:{room?.question.description}</p>
+          <AnimatedText id="text" text={room?.question.description} />
           <ol>
             {room?.question.options &&
               Object.entries(room?.question.options).map(([key, value]) => (

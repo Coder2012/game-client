@@ -18,7 +18,7 @@ type Options = {
   D: string;
 };
 
-type Question = {
+export type Question = {
   category: string;
   description: string;
   options: Options;

@@ -1,8 +1,13 @@
 @use "styles/_variables.scss" as *;
 
+body {
+  font-family: 'Audiowide', cursive;
+}
+
 .container {
   background-color: $sandy-stone-beach-ocean-diver-2-hex;
-  color: $sandy-stone-beach-ocean-diver-3-hex;
+  color: $terminal-green;
+  padding: 18px;;
   text-align: center;
 }
 
