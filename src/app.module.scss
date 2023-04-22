@@ -9,6 +9,22 @@ body {
   color: $terminal-green;
   padding: 18px;
   text-align: center;
+
+  ol {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    align-items: center;
+
+    li {
+      align-self: auto;
+      margin: 8px 0;
+      width: 280px;
+    }
+  }
 }
 
 .button {
@@ -17,7 +33,32 @@ body {
   border-radius: 8px;
   color: $toyota-red;
   cursor: pointer;
+  display: block;
   font-size: 16px;
   font-weight: 700;
   padding: 6px;
+  width: 100%;
+}
+
+.answerButton {
+  @extend .button;
+  border: $sandy-stone-beach-ocean-diver-4-hex;
+  color: $sandy-stone-beach-ocean-diver-4-hex;
+
+  &Correct {
+    animation: flash 0.3s 3;
+    color: $toyota-red;
+  }
+}
+
+@keyframes flash {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
