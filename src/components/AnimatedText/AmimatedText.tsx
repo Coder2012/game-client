@@ -6,7 +6,7 @@ type Props = {
 };
 
 export const AnimatedText = ({ id, text }: Props) => {
-  let textRef = useAnimateText(id);
+  let textRef = useAnimateText(id, text);
 
   return (
     <p ref={textRef} id={id}>

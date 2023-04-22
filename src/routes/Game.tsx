@@ -1,7 +1,9 @@
 import { Players } from '../components/Players/Players';
-import styles from '../app.module.scss';
 import { RoomState } from '../types';
 import { AnimatedText } from '../components/AnimatedText/AmimatedText';
+import styles from '../app.module.scss';
+import { Header } from '../components/Header/Header';
+import { useEffect, useState, useRef } from 'react';
 
 type Props = {
   room: RoomState | null;
@@ -9,11 +11,12 @@ type Props = {
 };
 
 export const Game = ({ room, onGuessHandler }: Props) => {
+  useEffect(() => {
+    console.log('game:');
+  }, []);
   return (
     <div className={styles.container}>
-      <section className={styles.title}>
-        <h1>Trivia - First to 5</h1>
-      </section>
+      <Header />
       {room?.players?.length && <Players room={room} />}
       {room?.question && (
         <>

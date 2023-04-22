@@ -1,10 +1,11 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 
-export const useAnimateText = (id: string) => {
+export const useAnimateText = (id: string, text: string) => {
   const textRef = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
+    console.log(id);
     const textElement = textRef.current;
     const originalText = textElement?.textContent;
     if (textElement && originalText) {
@@ -17,7 +18,7 @@ export const useAnimateText = (id: string) => {
         stagger: 0.04,
       });
     }
-  }, [id]);
+  }, [id, text]);
 
   return textRef;
 };

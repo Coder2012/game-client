@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useStore } from 'effector-react';
 import type { ConnectionMetadata } from './types';
 
@@ -18,28 +18,9 @@ function App() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const unwatch = gameService.navigation.watch((path) => path && setPath(path));
 
-  const componentMap: any = {
-    home: {
-      component: () => (
-        <Home
-          room={room}
-          onJoinGameHandler={onJoinGameHandler}
-          onRemovePlayerClickHandler={onRemovePlayerClickHandler}
-          onStartGameHandler={onStartGameHandler}
-          hasJoinedGame={hasJoinedGame}
-        />
-      ),
-    },
-    game: {
-      component: () => <Game room={room} onGuessHandler={onGuessHandler} />,
-    },
-    finish: {
-      component: () => <Finish room={room} />,
-    },
-    error: {
-      component: () => <ErrorMessage />,
-    },
-  };
+  useEffect(() => {
+    console.log('App mounted');
+  }, []);
 
   const onJoinGameHandler = async (data: ConnectionMetadata) => {
     try {
@@ -64,11 +45,20 @@ function App() {
     console.log('guess ', value);
   };
 
-  const Component = componentMap[path].component;
-
   return (
     <>
-      <Component />
+      {path === 'home' && (
+        <Home
+          room={room}
+          onJoinGameHandler={onJoinGameHandler}
+          onRemovePlayerClickHandler={onRemovePlayerClickHandler}
+          onStartGameHandler={onStartGameHandler}
+          hasJoinedGame={hasJoinedGame}
+        />
+      )}
+      {path === 'game' && <Game room={room} onGuessHandler={onGuessHandler} />}
+      {path === 'finish' && <Finish room={room} />}
+      {path === 'error' && <ErrorMessage />}
     </>
   );
 }

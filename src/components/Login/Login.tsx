@@ -14,7 +14,7 @@ export const Login = ({ joinGameHandler }: Props) => {
   const [password, setPassword] = useState('');
   const [playerName, setPlayerName] = useState('');
 
-  const textRef = useAnimateText('text');
+  const textRef = useAnimateText('text', '');
 
   const onNameChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPlayerName(event.target.value);

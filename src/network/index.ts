@@ -28,9 +28,8 @@ export const connect = async ({ playerName, password }: ConnectionMetadata) => {
     gameService.navigation(path);
   });
 
-  room.onMessage('powerup', (message) => {
-    console.log('message received from server');
-    console.log(message);
+  room.onMessage('timer', (value) => {
+    gameService.timer(value);
   });
 };
 
