@@ -1,4 +1,5 @@
 import { useAnimateText } from '../../hooks/useAnimateText';
+import styles from './animatedText.module.scss';
 
 type Props = {
   id: string;
@@ -9,7 +10,7 @@ export const AnimatedText = ({ id, text }: Props) => {
   let textRef = useAnimateText(id, text);
 
   return (
-    <p ref={textRef} id={id}>
+    <p className={styles.text} ref={textRef} id={id}>
       {text}
     </p>
   );

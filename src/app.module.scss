@@ -34,20 +34,29 @@ body {
   color: $toyota-red;
   cursor: pointer;
   display: block;
-  font-size: 16px;
+  font-size: 26px;
   font-weight: 700;
   padding: 6px;
   width: 100%;
+
+  &Selected {
+    color: $sandy-stone-beach-ocean-diver-3-hex;
+  }
 }
 
 .answerButton {
   @extend .button;
-  border: $sandy-stone-beach-ocean-diver-4-hex;
+  border: 2px solid $sandy-stone-beach-ocean-diver-4-hex;
   color: $sandy-stone-beach-ocean-diver-4-hex;
 
   &Correct {
     animation: flash 0.3s 3;
     color: $toyota-red;
+  }
+
+  &PlayerCorrect {
+    animation: flash 0.3s 3;
+    color: $terminal-green;
   }
 }
 

@@ -1,10 +1,10 @@
 import classNames from 'classnames';
 import { Players } from '../components/Players/Players';
+import { useEffect, useState } from 'react';
 import { RoomState } from '../types';
 import { AnimatedText } from '../components/AnimatedText/AmimatedText';
 import { Header } from '../components/Header/Header';
 import styles from '../app.module.scss';
-import { Player } from '../components/Player/Player';
 
 type Props = {
   room: RoomState | null;
@@ -12,6 +12,14 @@ type Props = {
 };
 
 export const Game = ({ room, onGuessHandler }: Props) => {
+  const [selected, setSelected] = useState('');
+
+  useEffect(() => {
+    if (!room?.answer) {
+      setSelected('');
+    }
+  }, [room?.answer]);
+
   return (
     <div className={styles.container}>
       <Header />
@@ -25,22 +33,24 @@ export const Game = ({ room, onGuessHandler }: Props) => {
                 <li>
                   {!room?.answer ? (
                     <button
-                      className={styles.button}
+                      className={classNames(styles.button, { [styles.buttonSelected]: selected === key })}
                       type="button"
                       onClick={() => {
+                        setSelected(key);
                         onGuessHandler(key);
                       }}
                     >
                       {key} - {value}
                     </button>
                   ) : (
-                    <div
+                    <button
                       className={classNames(styles.answerButton, {
                         [styles.answerButtonCorrect]: key === room?.answer,
+                        [styles.answerButtonPlayerCorrect]: selected === key && selected === room?.answer,
                       })}
                     >
                       {key} - {value}
-                    </div>
+                    </button>
                   )}
                 </li>
               ))}
