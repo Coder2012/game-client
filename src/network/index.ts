@@ -29,6 +29,7 @@ export const connect = async ({ playerName, password }: ConnectionMetadata) => {
   });
 
   room.onMessage('timer', (value) => {
+    console.log(`value: ${value}`);
     gameService.timer(value);
   });
 };
