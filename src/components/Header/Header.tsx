@@ -1,4 +1,3 @@
-// import gsap, { Linear } from 'gsap';
 import { useEffect, useRef, useState } from 'react';
 import { gameService } from '../../services/game';
 import styles from './Header.module.scss';

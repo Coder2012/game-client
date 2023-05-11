@@ -1,7 +1,6 @@
 import { Players } from '../components/Players/Players';
 import { RoomState } from '../types';
 import styles from '../app.module.scss';
-import { Header } from '../components/Header/Header';
 
 type Props = {
   room: RoomState | null;
