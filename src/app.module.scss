@@ -1,11 +1,11 @@
 @use "styles/_variables.scss" as *;
 
 body {
+  background-color: $sandy-stone-beach-ocean-diver-1-hex;
   font-family: 'Audiowide', cursive;
 }
 
 .container {
-  background-color: $sandy-stone-beach-ocean-diver-1-hex;
   color: $terminal-green;
   padding: 18px;
   text-align: center;
@@ -34,11 +34,10 @@ body {
   border-radius: 8px;
   color: $toyota-red;
   cursor: pointer;
-  display: block;
+  display: inline;
   font-size: 26px;
   font-weight: 700;
   padding: 6px;
-  width: 100%;
 
   &Selected {
     color: $sandy-stone-beach-ocean-diver-3-hex;
@@ -49,6 +48,7 @@ body {
   @extend .button;
   border: 2px solid $sandy-stone-beach-ocean-diver-4-hex;
   color: $sandy-stone-beach-ocean-diver-4-hex;
+  width: 100%;
 
   &Correct {
     animation: flash 0.3s 3;
@@ -63,6 +63,15 @@ body {
 
 .status {
   font-size: 22px;
+}
+
+.winners {
+  animation: flash 1s 5;
+  list-style-type: none;
+
+  li {
+    font-size: 32px;
+  }
 }
 
 @keyframes flash {

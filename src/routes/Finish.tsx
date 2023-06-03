@@ -12,9 +12,9 @@ export const Finish = ({ room }: Props) => {
     <div className={styles.container}>
       {room?.players?.length && <Players room={room} />}
       <h1>Congratulations to our {winners?.length > 1 ? 'winners' : 'winner'}</h1>
-      <ul>
+      <ul className={styles.winners}>
         {winners.map((player) => (
-          <li style={{ color: `${player.colour}` }}>{player.name}</li>
+          <li className={styles.flash}>{player.name}</li>
         ))}
       </ul>
     </div>

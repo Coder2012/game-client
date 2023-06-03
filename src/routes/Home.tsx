@@ -23,7 +23,7 @@ export const Home = ({
       {!hasJoinedGame && <Login joinGameHandler={onJoinGameHandler} />}
       {room?.players?.length && <Players room={room} removePlayerClickHandler={onRemovePlayerClickHandler} />}
       {room?.isGameOver && !room?.isGameRunning && room?.hostId && room?.players?.length > 1 && (
-        <button type="button" onClick={onStartGameHandler}>
+        <button className={styles.button} type="button" onClick={onStartGameHandler}>
           Start Game
         </button>
       )}

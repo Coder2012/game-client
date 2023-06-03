@@ -1,3 +1,5 @@
+@use "../../styles/_variables.scss" as *;
+
 .container {
   padding: 16px;
   text-align-last: left;
@@ -5,13 +7,17 @@
 
 .formRow {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   margin: 16px 0;
+
+  &:last-of-type {
+    margin-bottom: 32px;
+  }
 }
 
 .title {
   margin: 8px 0;
-  font-size: 16px;
+  font-size: 24px;
 }
 
 label {
@@ -19,8 +25,13 @@ label {
 }
 
 input {
+  color: $blue;
   height: 28px;
+  background: none;
   border: none;
-  border-radius: 6px;
+  border-bottom: 2px solid $blue;
 }
 
+.loginButton {
+  color: $blue;
+}

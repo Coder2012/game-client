@@ -39,8 +39,10 @@
 }
 
 .removeButton {
-  background-color: aqua;
+  color: aqua;
+  background: none;
   border: none;
-  border-radius: 32px;
-  padding: 8px;
+  border-bottom: 1px solid $blue;
+  padding: 0;
+  margin-inline-start: 5px;
 }

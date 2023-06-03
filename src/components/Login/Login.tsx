@@ -5,6 +5,7 @@ import { ConnectionMetadata } from '../../types';
 import appStyles from '../../app.module.scss';
 import styles from './login.module.scss';
 import { useAnimateText } from '../../hooks/useAnimateText';
+import classNames from 'classnames';
 
 type Props = {
   joinGameHandler: ({ playerName, password }: ConnectionMetadata) => void;
@@ -37,7 +38,11 @@ export const Login = ({ joinGameHandler }: Props) => {
         <label htmlFor="password">Password</label>
         <input name="password" type="text" onChange={onPasswordChangeHandler} />
       </div>
-      <button className={appStyles.button} type="button" onClick={() => joinGameHandler({ password, playerName })}>
+      <button
+        className={classNames(appStyles.button, styles.loginButton)}
+        type="button"
+        onClick={() => joinGameHandler({ password, playerName })}
+      >
         Join Game
       </button>
     </div>
