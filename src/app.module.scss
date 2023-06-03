@@ -5,10 +5,11 @@ body {
 }
 
 .container {
-  background-color: $sandy-stone-beach-ocean-diver-2-hex;
+  background-color: $sandy-stone-beach-ocean-diver-1-hex;
   color: $terminal-green;
   padding: 18px;
   text-align: center;
+  height: 100vh;
 
   ol {
     display: flex;
@@ -58,6 +59,10 @@ body {
     animation: flash 0.3s 3;
     color: $terminal-green;
   }
+}
+
+.status {
+  font-size: 22px;
 }
 
 @keyframes flash {

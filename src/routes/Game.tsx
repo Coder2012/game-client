@@ -58,10 +58,10 @@ export const Game = ({ room, onGuessHandler }: Props) => {
         </>
       )}
       {room?.answer && (
-        <>
+        <div className={styles.status}>
           <p>The correct answer was {room?.answer}</p>
           <p>Get ready for the next question!</p>
-        </>
+        </div>
       )}
     </div>
   );

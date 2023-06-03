@@ -1,0 +1,30 @@
+{
+  "tabs": [
+    {
+      "name": "config",
+      "tabGroups": [
+        {
+          "files": [
+            "file:///home/coder2012/git/game-client/Dockerfile",
+            "file:///home/coder2012/git/game-client/tsconfig.json",
+            "file:///home/coder2012/git/game-client/package.json",
+            "file:///home/coder2012/git/game-client/.prettierrc"
+          ],
+          "viewColumn": 1
+        }
+      ]
+    },
+    {
+      "name": "header",
+      "tabGroups": [
+        {
+          "files": [
+            "file:///home/coder2012/git/game-client/src/components/Header/Header.module.scss",
+            "file:///home/coder2012/git/game-client/src/components/Header/Header.tsx"
+          ],
+          "viewColumn": 1
+        }
+      ]
+    }
+  ]
+}

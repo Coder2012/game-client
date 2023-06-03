@@ -16,23 +16,25 @@
   display: inline-block;
   width: 32px;
   height: 32px;
+  margin-right: 3px;
 
   &::before {
     content: '';
-    background-color: $toyota-red;
+    // background-color: $toyota-red;
+    border: 4px solid $sandy-stone-beach-ocean-diver-2-rgba;
     border-radius: 50%;
     display: inline-block;
-    width: 100%;
-    height: 100%;
+    width: 80%;
+    height: 80%;
   }
 
   &--correct::before {
     content: '';
-    background-color: green;
+    background-color: $blue;
     border-radius: 50%;
     display: inline-block;
-    width: 100%;
-    height: 100%;
+    width: 80%;
+    height: 80%;
   }
 }
 
